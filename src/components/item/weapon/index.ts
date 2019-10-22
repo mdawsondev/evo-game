@@ -1,0 +1,1 @@
+export { IWeapon, Weapon } from "./Weapon";

@@ -1,0 +1,1 @@
+export { INPC, NPC } from "./NPC";

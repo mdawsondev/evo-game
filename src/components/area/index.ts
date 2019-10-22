@@ -1,0 +1,1 @@
+export { Area, IAreaConfig } from "./Area";
