@@ -36,5 +36,3 @@ class GenerateWeapon {
 }
 
 export const genWeapon = new GenerateWeapon().generate;
-
-genWeapon(2);

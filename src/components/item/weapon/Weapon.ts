@@ -12,8 +12,6 @@ export class Weapon extends Item {
       value: data.value,
       quality: data.quality
     });
-    console.debug("Inside of weapon.");
-
     this._damage = data.damage;
   }
 
