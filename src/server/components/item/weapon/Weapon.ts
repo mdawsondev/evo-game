@@ -1,4 +1,4 @@
-import { IItem, Item } from "../"
+import { IItem, Item } from ".."
 
 export interface IWeapon extends IItem {
   damage: number;

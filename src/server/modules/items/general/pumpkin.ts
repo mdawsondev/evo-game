@@ -1,4 +1,4 @@
-import { Item, IItem } from "..";
+import { Item, IItem } from "../../items";
 
 const config: IItem = {
   description: {

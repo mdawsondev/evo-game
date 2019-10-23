@@ -1,4 +1,4 @@
-import { Weapon, IWeapon } from "..";
+import { Weapon, IWeapon } from "../../items";
 import { quality } from "../../../data";
 
 const config: IWeapon = {

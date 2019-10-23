@@ -1,6 +1,6 @@
-import { Item, NPC, Player, Weapon, } from "./components";
+import { Item, NPC, Player, Weapon, } from "./server/components";
 import { genWeapon } from "./functions/generate";
-import { office } from "./modules/areas/office";
+import { office } from "./server/modules/areas/office";
 
 /** --- Demo Program ---
  * @desc Hey, who knows?

@@ -1,4 +1,4 @@
-import { INPC, NPC } from "..";
+import { INPC, NPC } from "../../npcs";
 
 const config: INPC = {
   health: 100,
