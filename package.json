@@ -1,8 +1,8 @@
 {
-  "name": "game",
+  "name": "evo-game",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/client/index.tsx",
+  "main": "./dist/index.js",
   "scripts": {
     "build-dev": "webpack -d --mode development",
     "build-dist": "npm run build-electron && npm run build-dev",
@@ -12,14 +12,14 @@
     "clean": "rm -rf dist && mkdir dist",
     "start": "electron ./dist/electron.js"
   },
-  "author": "",
+  "author": "Matt Dawson",
   "license": "MIT",
   "dependencies": {
-    "@types/node": "^12.11.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
   },
   "devDependencies": {
+    "@types/node": "^12.11.2",
     "@types/react": "^16.9.9",
     "@types/react-dom": "^16.9.2",
     "awesome-typescript-loader": "^5.2.1",
