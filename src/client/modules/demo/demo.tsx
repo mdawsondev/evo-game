@@ -1,6 +1,6 @@
-import { Item, NPC, Player, Weapon, } from "../../../server/components";
-import { genWeapon } from "../../../server/functions/generate";
-import { office } from "../../../server/modules/areas/office";
+import { Item, NPC, Player, Weapon, } from "../../components";
+import { genWeapon } from "../../functions/generate";
+import { office } from "../areas/office";
 import React from "react";
 
 export const Demo = () => {
