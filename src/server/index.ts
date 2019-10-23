@@ -1,26 +1,24 @@
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
-import { buildSchema } from 'graphql';
+import { Client } from 'pg';
+import { root, schema } from "./schema";
 
-// Construct a schema, using GraphQL schema language
-const schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
-
-// The root provides a resolver function for each API endpoint
-const root = {
-  hello: () => {
-    return 'Hello world!';
-  },
+const dbConfig = {
+  host: "localhost",
+  user: "admin",
+  password: "admin",
+  database: "game"
 };
 
-const app = express();
-app.use('/graphql', graphqlHTTP({
+const gqlConfig = {
   schema: schema,
   rootValue: root,
   graphiql: true,
-}));
+}
+
+const client = new Client(dbConfig);
+const app = express();
+
+client.connect();
+app.use('/graphql', graphqlHTTP(gqlConfig));
 app.listen(4000);
-console.log('Running a GraphQL API server at localhost:4000/graphql');
