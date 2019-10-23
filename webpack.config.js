@@ -1,12 +1,16 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 
 const config = {
-  entry: './src/client/index.tsx',
+  entry: {
+    client: './src/client/index.tsx',
+    server: './src/server/index.ts'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -34,12 +38,22 @@ const config = {
       '.js'
     ]
   },
+  target: 'node',
+  externals: [
+    nodeExternals()
+  ],
   plugins: [
-    new HtmlWebpackPlugin({  // Also generate a test.html
+    new HtmlWebpackPlugin({
+      chunks: ['client'],
       filename: 'index.html',
       template: './src/client/index.html'
     })
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 };
 
 module.exports = config;
