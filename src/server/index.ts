@@ -1,24 +1,36 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import { Client } from 'pg';
-import { root, schema } from "./schema";
+import { schema } from "./schema";
+
+dotenv.config();
+
+const {
+  POSTGRESS_DB,
+  POSTGRESS_HOST,
+  POSTGRESS_PASS,
+  POSTGRESS_PORT,
+  POSTGRESS_USER
+} = process.env;
 
 const dbConfig = {
-  host: "localhost",
-  user: "admin",
-  password: "admin",
-  database: "game"
+  database: POSTGRESS_DB,
+  host: POSTGRESS_HOST,
+  password: POSTGRESS_PASS,
+  port: Number(POSTGRESS_PORT),
+  user: POSTGRESS_USER
 };
 
 const gqlConfig = {
-  schema: schema,
-  rootValue: root,
   graphiql: true,
-}
+  schema: schema
+};
 
-const client = new Client(dbConfig);
 const app = express();
+export const client = new Client(dbConfig);
 
 client.connect();
 app.use('/graphql', graphqlHTTP(gqlConfig));
 app.listen(4000);
+console.log("GraphQL is running at localhost:4000/graphql");

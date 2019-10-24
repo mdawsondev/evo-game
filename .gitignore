@@ -2,6 +2,7 @@
 coverage/
 dist/
 !dist/index.html
+.env
 node_modules/
 *.log
 
