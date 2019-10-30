@@ -29,9 +29,16 @@ export const CreateUser = {
     lastName: { type: GraphQLString }
   },
   async resolve(parentValue: any, args: any) {
-    const query = `INSERT INTO "user" (username, password, salt, email, "firstName", "lastName") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"`;
+    const uniqueQuery = `SELECT id FROM "user" WHERE userName=$1`;
+    const uniqueValues = [args.username];
+    const user = await client.query(uniqueQuery, uniqueValues)
+      .then((res: QueryResult<any>) => res.rows[0]);
+
+    if (!!user) throw new Error("This username is taken.");
+
+    const insertQuery = `INSERT INTO "user" (username, password, salt, email, "firstName", "lastName") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"`;
     const hashData = saltHashPassword(args.password);
-    const values = [
+    const insertValues = [
       args.username,
       hashData.passwordHash,
       hashData.salt,
@@ -40,7 +47,7 @@ export const CreateUser = {
       args.lastName
     ];
 
-    return await client.query(query, values)
+    return await client.query(insertQuery, insertValues)
       .then((res: QueryResult<any>) => res.rows[0]);
   }
 }
