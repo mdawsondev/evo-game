@@ -1,13 +1,22 @@
 import { GraphQLSchema, GraphQLObjectType,  } from "graphql";
-import { UserField } from "./user";
+import { CreateUser, ReadUser, ValidateUser } from "./user";
 
 const RootQuery = new GraphQLObjectType({
-  name: "RootQueryType",
+  name: "Query",
   fields: {
-    user: UserField
+    user: ReadUser,
+    login: ValidateUser
+  }
+});
+
+export const RootMutation = new GraphQLObjectType({
+  name: "Mutation",
+  fields: {
+    CreateUser
   }
 });
 
 export const schema = new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
+  mutation: RootMutation
 })

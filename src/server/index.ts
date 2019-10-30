@@ -1,3 +1,4 @@
+"use strict";
 import dotenv from 'dotenv';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
