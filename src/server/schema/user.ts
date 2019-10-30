@@ -78,8 +78,11 @@ export const ValidateUser = {
     const hashData = sha512(args.password, result.salt);
     if (result.password === hashData.passwordHash) {
       console.log("Successfully entered correct password.");
+      console.log({result});
+      return result;
     } else {
       console.log("Incorrect password.");
+      return null;
     }
   }
 }

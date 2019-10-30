@@ -8,11 +8,14 @@ import { schema } from "./schema";
 dotenv.config();
 
 const {
+  API_ENDPOINT,
+  API_PORT,
+  API_URL,
   POSTGRESS_DB,
   POSTGRESS_HOST,
   POSTGRESS_PASS,
   POSTGRESS_PORT,
-  POSTGRESS_USER
+  POSTGRESS_USER,
 } = process.env;
 
 const dbConfig = {
@@ -24,7 +27,7 @@ const dbConfig = {
 };
 
 const gqlConfig = {
-  graphiql: true,
+  graphiql: false,
   schema: schema
 };
 
@@ -32,6 +35,7 @@ const app = express();
 export const client = new Client(dbConfig);
 
 client.connect();
-app.use('/graphql', graphqlHTTP(gqlConfig));
-app.listen(4000);
-console.log("GraphQL is running at localhost:4000/graphql");
+app.get(`/${API_ENDPOINT}`, graphqlHTTP(gqlConfig));
+app.post(`/${API_ENDPOINT}`, graphqlHTTP(gqlConfig));
+app.listen(API_PORT);
+console.log(`GraphQL is running at ${API_URL}:${API_PORT}/${API_ENDPOINT}`);

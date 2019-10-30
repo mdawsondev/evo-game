@@ -2,6 +2,7 @@ import { Item, NPC, Player, Weapon, } from "../../components";
 import { genWeapon } from "../../functions/generate";
 import { office } from "../areas/office";
 import React from "react";
+import { Login } from "../login";
 
 export const Demo = () => {
   const player = new Player();
@@ -10,6 +11,7 @@ export const Demo = () => {
 
   return (
     <div>
+      <Login />
       <p>{player.name}, welcome to the game.</p>
       <p>You are currently standing in {office.name} and it is: {office.info}</p>
       <p>{office.name} contains {office.items.map((item: Item) => item.name)}.</p>
