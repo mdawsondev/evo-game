@@ -1,8 +1,8 @@
 import { Item, NPC, Player, Weapon, } from "../../components";
-import { genWeapon } from "../../functions/generate";
+import { genWeapon } from "../../scripts/generate";
 import { office } from "../areas/office";
 import React from "react";
-import { Login } from "../login";
+import { Login } from "../../components/login";
 
 export const Demo = () => {
   const player = new Player();

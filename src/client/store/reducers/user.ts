@@ -1,11 +1,16 @@
-const user = (state: any[] = [], action: any) => {
+const initUser = {
+  username: "",
+  email: "",
+  firstName: "",
+  lastName: ""
+}
+
+const user = (initUser: any = null, action: any) => {
   switch (action.type) {
     case "USER_LOGIN":
-      return [...state, action.user];
-    case "USER_READ":
-        return state[0];
+      return action.user;
     default:
-      return state;
+      return user;
   }
 }
 
