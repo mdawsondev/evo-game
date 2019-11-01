@@ -1,10 +1,10 @@
 import React from "react";
-import { Demo } from "../demo";
+import { MainMenu } from "../main-menu";
 
 export const Application = () => {
   return (
     <div className="application">
-      <Demo />
+      <MainMenu />
     </div>
   );
 }

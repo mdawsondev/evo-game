@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, useStore } from "react-redux";
+import { connect } from "react-redux";
 import { login } from "../../store/actions";
 
 
@@ -25,10 +25,14 @@ const Login = (props: any) => {
     </form>
   );
 
+  const renderActiveUser = () => (
+    <p>{ user.username }</p>
+  )
+
   return (
     <div className="login">
       { !!user.username
-        ? <p>{user.username}</p>
+        ? renderActiveUser()
         : renderLoginForm() }
     </div>
   );
